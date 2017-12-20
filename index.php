@@ -10,79 +10,27 @@ and open the template in the editor.
         <title></title>   
     </head>
     <body>
+        
+        <form action="controller.php" method="">
+            <input type="number" name="hits">
+            <input type="submit" name="submit" value="CNN">
+            <input type="submit" name="submit" value="Twitter">
+        </form>
+        
         <?php
         
-            require 'Crawler.php';
+        
+           /* require 'Crawler.php';
          
             $base_url = "http://www.cnn.com";
             $append_url = "http://www.cnn.com";
             $cnn_crawler = new NewsCrawler($base_url, 25);
+          */  
             
-            //echo "START <br>";
-            $trump = $cnn_crawler->findData();
-            //echo count($trump) . "<br>";
-            echo $cnn_crawler->formatData($trump);
-            
-            /*$url_queue = array();
-            array_push($url_queue, $base_url);
-            $visited_queue = array();
-            $TRUMP_COUNT = 25;
-            $count = 0;
-            $index = 0;
-            $test = [0 => "a", 1 => "b"];
-            
-            while($count < $TRUMP_COUNT)
-            {
-                $url = array_shift($url_queue);
-                echo "Next Visit : " . $url . "<br>";
-                $visited_queue[$url] = TRUE;
-                $html = @file_get_contents($url);
-                if($html !== FALSE)
-                {
-                    $dom = new DOMDocument;
-                    libxml_use_internal_errors(true);
-                    $dom->loadHTML($html);
-                    $xpath = new DOMXPath($dom);
-                    $links = $xpath->query('//a');
-                    $keys = array();
-                    $i=0;
-
-                    foreach($links as $link)
-                    {
-                        $keys[$i++] = $link->getAttribute('href');
-                    }
-                    $filled = array_fill_keys($keys, FALSE);
-                    foreach ($links as $link)
-                    {
-                        $url_link = $link->getAttribute('href');
-                        if(!$filled[$url_link])
-                        {
-                            $headline = $link->nodeValue;
-                            $filled[$url_link]=TRUE;
-                            $headline_length = strlen($headline);
-                            $found_trump = preg_match('/Trump/', $headline);
-                            if(isset($url_link[0]))
-                            {
-                                $absolute_url = $url_link[0] == '/' ? ($append_url . $url_link) : $url_link;
-                                if($headline_length > 29 && $found_trump)
-                                {
-                                    echo '<a href="' . $absolute_url . '" >' . $headline . '</a> <br>';
-                                    $count++;
-                                }
-                                elseif(!isset($visited_queue[$absolute_url]))
-                                {
-                                    array_push($url_queue, $absolute_url);
-                                    //echo count($url_queue) . "<br>";
-                                }
-                            }
-                            //echo $link->nodeValue . " " . $absolute_url . "<br>";
-                        }
-                    }
-                }
-                //echo "<br>";
-                
-                $index++;
-            }*/
+            //$trump = $cnn_crawler->findData();
+            //echo $cnn_crawler->formatData($trump);
+           // echo $cnn_crawler->executeCrawl();
+           
         ?> 
      
     </body>
