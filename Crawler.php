@@ -192,7 +192,7 @@ class TwitterCrawler extends Crawler
             $date_until = date("Y-m-d", $time_until);
             $url = "https://twitter.com/search?l=&q=from%3ArealDonaldTrump%20since%3A". $date_from .
                         "%20until%3A" . $date_until . "&src=typd";
-            $html = file_get_contents($url);
+            $html = @file_get_contents($url);
             $dom = new DOMDocument;
             libxml_use_internal_errors(true);
             $dom->loadHTML($html);
