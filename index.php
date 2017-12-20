@@ -11,10 +11,19 @@ and open the template in the editor.
     </head>
     <body>
         <?php
+        
+            require 'Crawler.php';
+         
             $base_url = "http://www.cnn.com";
             $append_url = "http://www.cnn.com";
+            $cnn_crawler = new NewsCrawler($base_url, 25);
             
-            $url_queue = array();
+            //echo "START <br>";
+            $trump = $cnn_crawler->findData();
+            //echo count($trump) . "<br>";
+            echo $cnn_crawler->formatData($trump);
+            
+            /*$url_queue = array();
             array_push($url_queue, $base_url);
             $visited_queue = array();
             $TRUMP_COUNT = 25;
@@ -22,9 +31,10 @@ and open the template in the editor.
             $index = 0;
             $test = [0 => "a", 1 => "b"];
             
-            while($count < $TRUMP_COUNT && $index < count($url_queue))
+            while($count < $TRUMP_COUNT)
             {
-                $url = array_splice($url_queue, 0, 1)[0];
+                $url = array_shift($url_queue);
+                echo "Next Visit : " . $url . "<br>";
                 $visited_queue[$url] = TRUE;
                 $html = @file_get_contents($url);
                 if($html !== FALSE)
@@ -34,8 +44,6 @@ and open the template in the editor.
                     $dom->loadHTML($html);
                     $xpath = new DOMXPath($dom);
                     $links = $xpath->query('//a');
-
-
                     $keys = array();
                     $i=0;
 
@@ -74,7 +82,7 @@ and open the template in the editor.
                 //echo "<br>";
                 
                 $index++;
-            }
+            }*/
         ?> 
      
     </body>

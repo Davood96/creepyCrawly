@@ -11,7 +11,13 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-            $date_until = date("Y-m-d");
+            require 'Crawler.php';
+        
+            $twitter_crawler = new TwitterCrawler("", 25);
+            $tweets = $twitter_crawler->findData();
+            //echo count($tweets);
+            echo $twitter_crawler->formatData($tweets);
+            /*$date_until = date("Y-m-d");
             $time_until = time();
             $time_from = $time_until - 60*60*24;
            
@@ -41,7 +47,7 @@ and open the template in the editor.
                 }
                 $time_until = $time_from;
                 $time_from = $time_from - 60*60*24;
-            }
+            }*/
         ?>
     </body>
 </html>
